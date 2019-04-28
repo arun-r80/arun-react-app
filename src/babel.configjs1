@@ -1,0 +1,24 @@
+//babel.config.js 
+
+module.exports = api =>  {
+    const isTestEnv = api.env('test');
+
+    if ( isTestEnv) {
+        return {
+            presets: [
+                [
+                  '@babel/preset-env',
+                  {
+                    targets: {
+                      node: 'current',
+                    },
+                  },
+                ],
+              ],
+              transform: {
+                "\\.js$": "<rootDir>/node_modules/babel-jest"
+              }
+        }
+    }
+
+}
